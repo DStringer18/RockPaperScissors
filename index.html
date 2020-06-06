@@ -1,0 +1,67 @@
+<!doctype html>
+
+<html>
+    <head>
+        <title>Rock Paper Scissors</title>
+        <link rel="stylesheet" href="resources/css/style.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/v4-shims.css">
+    </head>
+    <body>
+        <div class='game-container'>
+            <header>
+                <h1>Let's Play Rock Paper Scissors!</h1>
+            </header>
+
+            <div class="rounds">
+                <p class="round-label">Round <span id="round-number">1</span></p>
+            </div>
+            <div class="game-area">
+                <div class="choice computer-choice">
+                    <div class="choice-title">
+                        <p class="choice-label">Computer</p>
+                        <p class="score-label">Score:<span id="computer-score">0</span></p>
+                    </div>
+                    <span class="c-choice-default" id="c_default">?</span>
+                    <span class="choice-icon" id="c_rock"><i class="fas fa-hand-rock"></i></span>
+                    <span class="choice-icon" id="c_paper"><i class=" fas fa-hand-paper"></i></span>
+                    <span class="choice-icon" id="c_scissors"><i class=" fas fa-hand-scissors"></i></span>  
+                    <p class="winning-text" id="computer-wins"></p>
+                </div>
+                <div class="choice human-choice">
+                    <div class="choice-title">
+                        <p class="choice-label">You</p>
+                        <p class="score-label">Score:<span id="human-score">0</span></p>
+                    </div>
+                    <div class="choice-buttons">
+                        <button class="choice-icon" id="h_rock"><i class="fas fa-hand-rock"></i></button>
+                        <button class="choice-icon" id="h_paper"><i class=" fas fa-hand-paper"></i></button>
+                        <button class="choice-icon" id="h_scissors"><i class=" fas fa-hand-scissors"></i></button>    
+                    </div>
+                    <br>
+                    <button id="play">Play!</button>
+                </div>
+            </div>
+            <div class="next-round-container">
+                <button class="button" id="next-round" disabled>Next Round</button>
+            </div>
+            <div class="instructions">
+                <div class="instruction">
+                    <h3>Step 1</h3>
+                    <p>Choose Rock, Paper, or Scissors.</p>
+                </div>
+                <div class="instruction">
+                    <h3>Step 2</h3>
+                    <p>Click "Play!" to submit your choice and see who wins.</p>
+                </div>
+                <div class="instruction">
+                    <h3>Step 3</h3>
+                    <p>Click "Next Round" to play again.</p>
+                </div>
+            </div>
+        </div>
+
+        <script src="resources/js/script.js"></script>
+        <script src="resources/js/game.js"></script>
+    </body>
+</html>
