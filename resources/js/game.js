@@ -9,6 +9,7 @@ const paperButton = document.getElementById('h_paper');
 const scissorsButton = document.getElementById('h_scissors');
 const playButton = document.getElementById('play');
 const nextRoundButton = document.getElementById('next-round');
+const computerWins = document.getElementById('computer-wins');
 console.log("test");
 
 rockButton.addEventListener('click', () => {
@@ -25,12 +26,13 @@ scissorsButton.addEventListener('click', () => {
 
 playButton.addEventListener('click', () => {
     // Make a random 'computer choice' and display:
-    const computerChoice = Math.random();
-    if (computerChoice <= 1/3) {
+    let computerChoice
+    let computerChoiceVar = Math.random();
+    if (computerChoiceVar <= 1/3) {
         computerChoice = "rock"
         document.getElementById('c_default').style.display = "none"
         document.getElementById('c_rock').style.display = "block"
-      } else if (computer < 2/3) {
+      } else if (computerChoice < 2/3) {
         computerChoice = "scissors"
         document.getElementById('c_default').style.display = "none"
         document.getElementById('c_scissors').style.display = "block"
@@ -52,7 +54,7 @@ playButton.addEventListener('click', () => {
     playButton.innerText = 'You Win!!!!!';
     playButton.classList.toggle('winning-text')
   } else {
-    computerWinsDisplay.innerText = 'Computer Wins!!!';
+    computerWins.innerText = 'Computer Wins!!!';
   };
 
     //Disable play button:
@@ -65,6 +67,7 @@ playButton.addEventListener('click', () => {
 nextRoundButton.addEventListener('click', () => {
     // Increase the round number
     advanceRound();
+
     // Display the new round number
     roundNumberDisplay.innerText = currentRoundNumber;
   
@@ -72,9 +75,14 @@ nextRoundButton.addEventListener('click', () => {
     nextRoundButton.setAttribute('disabled', true);
     playButton.removeAttribute('disabled');
 
+    // Reset the winner label display
+    playButton.innerText = 'Play!';
+    computerWins.innerText = '';
+
     //Reset the button displays
     document.getElementById('c_rock').style.display = "none";
     document.getElementById('c_paper').style.display = "none";
     document.getElementById('c_scissors').style.display = "none";
-    document.getElementById('c_default').style.display = "block"
+    document.getElementById('c_default').style.display = "block";
+
 });
