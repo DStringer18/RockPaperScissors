@@ -10,7 +10,6 @@ const scissorsButton = document.getElementById('h_scissors');
 const playButton = document.getElementById('play');
 const nextRoundButton = document.getElementById('next-round');
 const computerWins = document.getElementById('computer-wins');
-console.log("test");
 
 rockButton.addEventListener('click', () => {
     humanChoice = "rock"
@@ -32,7 +31,7 @@ playButton.addEventListener('click', () => {
         computerChoice = "rock"
         document.getElementById('c_default').style.display = "none"
         document.getElementById('c_rock').style.display = "block"
-      } else if (computerChoice < 2/3) {
+      } else if (computerChoiceVar < 2/3) {
         computerChoice = "scissors"
         document.getElementById('c_default').style.display = "none"
         document.getElementById('c_scissors').style.display = "block"
@@ -41,7 +40,8 @@ playButton.addEventListener('click', () => {
         document.getElementById('c_default').style.display = "none"
         document.getElementById('c_paper').style.display = "block"
       };
-    // Determine if the human or computer wins and display:
+    // Determine if the human or computer wins, display:
+    compareChoices(humanChoice, computerChoice);
     const whoIsWinner = compareChoices(humanChoice, computerChoice);
     resultsDisplay.innerText = whoIsWinner;
 
@@ -50,10 +50,14 @@ playButton.addEventListener('click', () => {
     computerScoreDisplay.innerText = computerScore;
 
     // Display the winner:
-    if (humanIsWinner) {
+    if (compareChoices(humanChoice, computerChoice) === "tie game!") {
+      computerWins.innerText = "";
+      playButton.innerText = ""
+    }
+    else if (humanIsWinner === true) {
     playButton.innerText = 'You Win!!!!!';
     playButton.classList.toggle('winning-text')
-  } else {
+  } else if (humanIsWinner === false) {
     computerWins.innerText = 'Computer Wins!!!';
   };
 
