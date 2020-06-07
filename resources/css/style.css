@@ -103,6 +103,7 @@
     cursor: pointer;
     font-size: 20px;
     border-radius: 50%;
+    background-color: rgb(223, 223, 223);
   }
   #c_default {
       display: block;
@@ -119,6 +120,7 @@
     margin-bottom: 7px;
     font-size: 20px;
     border-radius: 50%;
+
   }
 
   .c-choice-default {
