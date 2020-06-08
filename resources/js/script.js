@@ -1,50 +1,49 @@
 let humanScore = 0;
 let computerScore = 0;
 let currentRoundNumber = 1;
-let humanIsWinner
-
+let humanIsWinner;
 const compareChoices = (humanChoice, computerChoice) => {
-    if (humanChoice == computerChoice) {
+
+    if (humanChoice === computerChoice) {
+    humanIsWinner = 0;
     return "tie game!"
-    } else if (humanChoice == "rock") {
-        if (computerChoice == "paper") {
-            humanIsWinner === false;
-            computerScore++;
+    } else if (humanChoice === "rock") {
+        if (computerChoice === "paper") {
+            humanIsWinner = 1;
             return "paper covers rock. You lose :("
-        } else if (computerChoice == "scissors") {
-            humanIsWinner === true;
-            humanScore++;
+        } else if (computerChoice === "scissors") {
+            humanIsWinner = 2;
             return "rock crushes scissors! You win :)"
         }
-    } else if (humanChoice == "paper") {
-        if (computerChoice == "rock") {
-            humanIsWinner === true;
-            humanScore++;
+    } else if (humanChoice === "paper") {
+        if (computerChoice === "rock") {
+            humanIsWinner = 2;
             return "paper covers rock! You win :)"
-        } else if (computerChoice == "scissors") {
-            humanIsWinner === false;
-            computerScore++;
+        } else if (computerChoice === "scissors") {
+            humanIsWinner = 1;
             return "scissors cut paper. You lose :("
         } 
-    } else {
-        if (computerChoice == "rock") {
-            humanIsWinner === false;
-            computerScore++;
+    } else if (humanChoice === "scissors") {
+        if (computerChoice === "rock") {
+            humanIsWinner = 1;
             return "rock crushes scissors. You lose :("
-        } else if (computerChoice == "paper") {
-            humanIsWinner === true;
-            humanScore++;
+        } else if (computerChoice === "paper") {
+            humanIsWinner = 2;
             return "scissors cut paper! You win :)"
-        }
+        } else {return "something went wrong -___-"}
     }
-}
+};
 
-/*const updateScore = () => {
-    if (compareChoices(humanChoice, computerChoice).includes('win')) {
+const updateScore = () => {
+    if (humanIsWinner === 2) {
         humanScore++;
-    } else {
+        } else if (humanIsWinner === 1) {
         computerScore++;
-    }
-}*/
+        } else if (humanIsWinner === 0) {
+        console.log("its a tie");
+        }
+};
+
+
 
 const advanceRound = () => currentRoundNumber++;

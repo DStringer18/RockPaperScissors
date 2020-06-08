@@ -10,18 +10,21 @@ const scissorsButton = document.getElementById('h_scissors');
 const playButton = document.getElementById('play');
 const nextRoundButton = document.getElementById('next-round');
 const computerWins = document.getElementById('computer-wins');
+const hChoices = document.querySelectorAll('button.choice');
 
 rockButton.addEventListener('click', () => {
-    humanChoice = "rock"
+    humanChoice = "rock";
 });
 paperButton.addEventListener('click', () => {
-    humanChoice = "paper"
+    humanChoice = "paper";
 });
 scissorsButton.addEventListener('click', () => {
-    humanChoice = "scissors"
+    humanChoice = "scissors";
 });
 
-
+let changeColor = (id) => {
+  document.getElementById(id).style.backgroundColor = blue;
+}
 
 playButton.addEventListener('click', () => {
     // Make a random 'computer choice' and display:
@@ -40,10 +43,12 @@ playButton.addEventListener('click', () => {
         document.getElementById('c_default').style.display = "none"
         document.getElementById('c_paper').style.display = "block"
       };
-    // Determine if the human or computer wins, display:
-    compareChoices(humanChoice, computerChoice);
-    const whoIsWinner = compareChoices(humanChoice, computerChoice);
-    resultsDisplay.innerText = whoIsWinner;
+    
+    // Compare the choices, choose winner, update score.
+    compareChoices(humanChoice, computerChoice)
+    let winningText = compareChoices(humanChoice, computerChoice);
+    resultsDisplay.innerText = winningText;
+    updateScore();
 
     // Display the current scores:
     humanScoreDisplay.innerText = humanScore;
@@ -53,16 +58,16 @@ playButton.addEventListener('click', () => {
     if (compareChoices(humanChoice, computerChoice) === "tie game!") {
       computerWins.innerText = "";
       playButton.innerText = ""
-    }
-    else if (humanIsWinner === true) {
+    } else if (humanIsWinner === 2) {
     playButton.innerText = 'You Win!!!!!';
     playButton.classList.toggle('winning-text')
-  } else if (humanIsWinner === false) {
+    } else if (humanIsWinner === 1) {
     computerWins.innerText = 'Computer Wins!!!';
   };
 
-    //Disable play button:
+    //Disable buttons:
     playButton.setAttribute('disabled', true);
+    //hChoices.setAttribute('disabled', true);
     nextRoundButton.removeAttribute('disabled');
 });
 
